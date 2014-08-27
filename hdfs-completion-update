@@ -1,0 +1,6 @@
+# Put the hdfs file structure in a file in /tmp/
+# Please modify at will
+
+hdfs dfs -ls -R /path/of/interest 2> /dev/null | \
+tr -s ' ' | cut -d' ' -f8 | \
+egrep "^(/[[:alnum:]=-]+){1,5}$" > /tmp/hdfs_completion
