@@ -7,7 +7,7 @@ _hdfs()
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
 
-    if [[ ${prev} == -ls && -f $DATA_LOC]]; then
+    if [[ ${prev} == -ls && -f $DATA_LOC ]]; then
         opts=$( cat $DATA_LOC )
         COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
         return 0
