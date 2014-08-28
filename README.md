@@ -4,7 +4,7 @@ hdfs-completion
 Bash completion for hdfs-cli, written with help from http://www.debian-administration.org/article/316.
 
 <h5>Usage</h5>
-* `hdfs-completion-update` [/path/of/interest]
+* `hdfs-completion-update [/path/of/interest]`
 * `hdfs dfs -ls /your/path[TAB]`
 
 <h5>Setup</h5>
