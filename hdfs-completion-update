@@ -1,6 +1,14 @@
 # Put the hdfs file structure in a file in /tmp/
 # Please modify at will
 
-hdfs dfs -ls -R /path/of/interest 2> /dev/null | \
+if [[ $# -eq 1 ]]; then
+    path=$1
+else
+    path="/"
+fi
+
+hdfs dfs -ls -R $path 2> /dev/null | \
 tr -s ' ' | cut -d' ' -f8 | \
-egrep "^(/[[:alnum:]=-]+){1,5}$" > /tmp/hdfs_completion
+#egrep "^(/[[:alnum:]=-]+){1,6}$" | \
+rev | cut -d/ -f2- | rev | sort | uniq | \
+grep -v ^$ > /tmp/hdfs_completion
