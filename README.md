@@ -3,8 +3,8 @@ hdfs-completion
 
 Bash completion for hdfs-cli,
 <h5>Usage</h5>
-* `hdfs-completion-update [/path/of/interest] [grep filter]
-* `hdfs dfs -ls /path/of/interest/[TAB]
+* `hdfs-completion-update [/path/of/interest] [grep filter]`
+* `hdfs dfs -ls /path/of/interest/[TAB]`
 * e.g.`hdfs-completion-update /user ^d` will list all the content of /user, filtering out files
 
 <h5>Setup</h5>
