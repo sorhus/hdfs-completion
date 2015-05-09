@@ -1,14 +1,14 @@
-# Put the hdfs file structure in a file in /tmp/
-# Please modify at will
-
-if [[ $# -eq 1 ]]; then
-    path=$1
-else
-    path="/"
-fi
-
-hdfs dfs -ls -R $path 2> /dev/null | \
-tr -s ' ' | cut -d' ' -f8 | \
-#egrep "^(/[[:alnum:]=-]+){1,6}$" | \
-rev | cut -d/ -f2- | rev | sort | uniq | \
-grep -v ^$ > /tmp/hdfs_completion
+#
+# Put the hdfs file structure in $HDFS_COMPLETION_TMP
+#
+# Optional args:
+#  * directory to list
+#  * grep filter
+#
+# Example:
+#   hdfs-completion-update /user ^d
+#   will list all the content of /user, filtering out files
+#
+hdfs dfs -ls -R "${1:-/}" 2> /dev/null | \
+grep "$2" | \
+tr -s ' ' | cut -d' ' -f8 > $HDFS_COMPLETION_TMP
